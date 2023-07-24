@@ -12,8 +12,8 @@ API guardar preferencias: http://localhost:8000/api/perros/agregar/{perro}
 ```
 ```json
 {
-  "perro_candidato_id": 2,
-  "preferencia": "aceptado"
+  "perro_candidato_id": 3,
+  "preferencia": "rechazado"
 }
 ```
 API ver preferencias http://localhost:8000/api/perros/{perro}
