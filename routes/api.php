@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PreferenciaController;
 use App\Http\Controllers\API\InteraccionController;
 
-Route::post('/perros/{perro}', [PreferenciaController::class, 'store']);
+Route::post('/perros/agregar/{perro}', [PreferenciaController::class, 'store']);
 Route::get('/perros/{perroInteresado}', [InteraccionController::class, 'index']);
 
 
