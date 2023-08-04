@@ -24,6 +24,8 @@ class PerroController extends Controller
         $perro->nombre = $request->input('nombre');
         $perro->url_foto = $request->input('url_foto');
         $perro->descripcion = $request->input('descripcion');
+        $perro->email = $request->input('email');
+        $perro->password = $request->input('password');
         $perro->save();
 
         return redirect()->route('perros.index');

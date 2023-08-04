@@ -12,6 +12,8 @@ class Perro extends Model
         'nombre',
         'url_foto',
         'descripcion',
+        'email',
+        'password',
     ];
 
     // Relación con el modelo Interaccion (Perros interesados)
