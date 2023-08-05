@@ -4,8 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PreferenciaController;
 use App\Http\Controllers\API\InteraccionController;
+use App\Http\Controllers\API\PerroController;
 
-Route::post('/perros/agregar/{perro}', [PreferenciaController::class, 'store']);
+Route::post('/perros/agregarpreferencia/{perro}', [PreferenciaController::class, 'store']);
+Route::post('/perros/agregar/', [PerroController::class, 'store']);
 Route::get('/perros/{perroInteresado}', [InteraccionController::class, 'index']);
 
 

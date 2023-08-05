@@ -22,6 +22,7 @@ class PerroController extends Controller
     {
         $perro = new Perro();
         $perro->nombre = $request->input('nombre');
+        $perro->sexo = $request->input('sexo');
         $perro->url_foto = $request->input('url_foto');
         $perro->descripcion = $request->input('descripcion');
         $perro->email = $request->input('email');
@@ -44,8 +45,11 @@ class PerroController extends Controller
     public function update(Request $request, Perro $perro)
     {
         $perro->nombre = $request->input('nombre');
+        $perro->sexo = $request->input('sexo');
         $perro->url_foto = $request->input('url_foto');
         $perro->descripcion = $request->input('descripcion');
+        $perro->email = $request->input('email');
+        $perro->password = $request->input('password');
         $perro->save();
 
         return redirect()->route('perros.index');
