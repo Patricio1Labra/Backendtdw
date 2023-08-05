@@ -8,6 +8,7 @@ use App\Http\Controllers\API\PerroController;
 
 Route::post('/perros/agregarpreferencia/{perro}', [PreferenciaController::class, 'store']);
 Route::post('/perros/agregar/', [PerroController::class, 'store']);
+Route::post('/perros/login/', [PerroController::class, 'login']);
 Route::get('/perros/{perroInteresado}', [InteraccionController::class, 'index']);
 
 

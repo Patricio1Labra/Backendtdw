@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Perro;
+use Illuminate\Support\Facades\Hash;
 
 class PerroController extends Controller
 {
@@ -32,4 +33,13 @@ class PerroController extends Controller
         // Puedes retornar una respuesta de éxito si lo deseas
         return response()->json(['message' => 'Perro registrado correctamente', 'perro' => $perro], 201);
     }
+
+    public function login(Request $req)
+    {
+        $user= Perro::where('email',$req->email)->first();
+        if(!$user || !Hash::check($req->password, $user->password))
+            return ["error"=>"Email or password is not matched"];
+        return $user;
+    }
+
 }
