@@ -40,7 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'perro' => [
+            'driver' => 'session',
+            'model' => App\Models\Perro::class,
+            'provider' => 'perros', // Usa el provider de 'perros' para este guard
+        ],
     ],
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -65,11 +72,12 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'perros' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Perro::class,
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
