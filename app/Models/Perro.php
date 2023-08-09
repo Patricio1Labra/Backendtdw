@@ -3,11 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
-use Laravel\Passport\HasApiTokens;
 
-class Perro extends Model implements Authenticatable
+class Perro extends Model
 {
     use AuthenticableTrait, HasApiTokens;
     protected $table = 'perros';
@@ -31,20 +28,5 @@ class Perro extends Model implements Authenticatable
     public function perrosCandidatos()
     {
         return $this->hasMany(Interaccion::class, 'perro_candidato_id');
-    }
-
-    public function getAuthIdentifierName()
-    {
-        return 'id';
-    }
-
-    public function getAuthIdentifier()
-    {
-        return $this->{$this->getAuthIdentifierName()};
-    }
-
-    public function getAuthPassword()
-    {
-        return $this->password;
     }
 }

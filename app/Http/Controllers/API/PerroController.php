@@ -5,8 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Perro;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 
 class PerroController extends Controller
 {
@@ -28,41 +26,22 @@ class PerroController extends Controller
             'url_foto' => $request->input('url_foto'),
             'descripcion' => $request->input('descripcion'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => $request->input('password'),
         ]);
 
         // Puedes retornar una respuesta de éxito si lo deseas
         return response()->json(['message' => 'Perro registrado correctamente', 'perro' => $perro], 201);
     }
 
-    public function login(Request $req)
+    public function show($id)
     {
-        $user= Perro::where('email',$req->email)->first();
-        if(!$user || !Hash::check($req->password, $user->password))
-            return ["error"=>"Email or password is not matched"];
-            $token = $user->createToken('authToken')->accessToken;
-            return response()->json(['token' => $token, 'user' => $user]);
-            //return $user;
-    }
+        $perro = Perro::find($id);
 
-    public function login1(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('perro')->attempt($credentials)) {
-            $perro = Auth::guard('perro')->user();
-            $token = $perro->createToken('authToken')->accessToken;
-    
-            return response()->json(['token' => $token, 'perro' => $perro]);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (!$perro) {
+            return response()->json(['message' => 'Perro no encontrado'], 404);
         }
-    }
 
-    public function logout(Request $request)
-    {
-        $request->user()->token()->revoke();
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json($perro);
     }
 
 }
