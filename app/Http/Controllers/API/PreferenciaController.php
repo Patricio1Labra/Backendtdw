@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PreferenciaController extends Controller
 {
-    public function store(Request $request, Perro $perro)
+    public function store(Request $request, $id)
     {
         // Validar los datos recibidos en la petición
         /*$request->validate([
@@ -19,7 +19,7 @@ class PreferenciaController extends Controller
 
         // Crear la interacción con las preferencias
         $interaccion = new Interaccion();
-        $interaccion->perro_interesado_id = $perro->id;
+        $interaccion->perro_interesado_id = $id;
         $interaccion->perro_candidato_id = $request->input('perro_candidato_id');
         $interaccion->preferencia = $request->input('preferencia');
         $interaccion->save();
